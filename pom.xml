@@ -9,9 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>spring_01</module>
-        <module>spring6-ioc-annotation</module>
-        <module>spring_reflect</module>
+        <module>spring6_01_xml</module>
+        <module>spring6_02_annotation</module>
+        <module>spring6_03_reflect</module>
+        <module>spring6_04_selfMadeAnnotation</module>
     </modules>
 
     <properties>
