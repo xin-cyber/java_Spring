@@ -7,4 +7,6 @@ package org.example.dao;
  * @Description: TODO
  */
 public interface UserDao {
+
+    void add();
 }

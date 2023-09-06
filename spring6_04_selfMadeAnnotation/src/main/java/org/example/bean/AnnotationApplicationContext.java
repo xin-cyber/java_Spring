@@ -1,14 +1,17 @@
 package org.example.bean;
 
 import org.example.annotation.Bean;
+import org.example.annotation.Di;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author JX
@@ -105,6 +108,39 @@ public class AnnotationApplicationContext implements ApplicationContext {
         }
     }
 
+    //属性注入
+    private void loadDi() {
+        //实例化对象在beanFactory的map集合里面
+        //1 遍历beanFactory的map集合
+        Set<Map.Entry<Class, Object>> entries = beanFactory.entrySet();
+        for (Map.Entry<Class, Object> entry : entries) {
+            //2 获取map集合每个对象（value），每个对象属性获取到
+            Object obj = entry.getValue();
+
+            //获取对象Class
+            Class<?> clazz = obj.getClass();
+
+            //获取每个对象属性获取到
+            Field[] declaredFields = clazz.getDeclaredFields();
+
+            //3 遍历得到每个对象属性数组，得到每个属性
+            for (Field field : declaredFields) {
+                //4 判断属性上面是否有@Di注解
+                Di annotation = field.getAnnotation(Di.class);
+                if (annotation != null) {
+                    //如果私有属性，设置可以设置值
+                    field.setAccessible(true);
+
+                    //5 如果有@Di注解，把对象进行设置（注入）
+                    try {
+                        field.set(obj, beanFactory.get(field.getType()));
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        }
+    }
 //    public static void main(String[] args) {
 //        ApplicationContext context = new AnnotationApplicationContext("");
 //        context.getBean()

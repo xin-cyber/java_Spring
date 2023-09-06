@@ -16,4 +16,8 @@ public class UserServiceImpl implements UserService {
 
     @Di
     private UserDao userDao;
+
+    public void add() {
+        System.out.println("service.....");
+    }
 }

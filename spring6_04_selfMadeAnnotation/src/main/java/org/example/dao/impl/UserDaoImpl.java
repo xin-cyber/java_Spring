@@ -1,5 +1,6 @@
 package org.example.dao.impl;
 
+import org.example.annotation.Bean;
 import org.example.dao.UserDao;
 
 /**
@@ -8,5 +9,10 @@ import org.example.dao.UserDao;
  * @Create 2023-09-05 21:47
  * @Description: TODO
  */
+@Bean
 public class UserDaoImpl implements UserDao {
+    @Override
+    public void add() {
+        System.out.println("dao.add......");
+    }
 }
