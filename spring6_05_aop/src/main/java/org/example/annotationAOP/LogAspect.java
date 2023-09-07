@@ -19,7 +19,9 @@ import java.util.Arrays;
 public class LogAspect {
 
     // 设置切入点和通知类型
-    @Before(value = "execution(public int org.example.annotationAOP.CalculatorImpl.*(..))")
+//    @Before(value = "execution(public int org.example.annotationAOP.CalculatorImpl.*(..))")
+//    @Before("pointCut()") // 同一个切面
+    @Before("org.example.annotationAOP.LogAspect.pointCut()")  // 不同切面
     public void beforeMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         System.out.println("前置通知....，方法名：" + methodName);
@@ -60,5 +62,10 @@ public class LogAspect {
             System.out.println("环绕通知-->目标对象方法执行完毕");
         }
         return result;
+    }
+
+    //重用切入点表达式
+    @Pointcut(value = "execution(* org.example.annotationAOP.CalculatorImpl.*(..))")
+    public void pointCut() {
     }
 }

@@ -21,7 +21,7 @@ public class TestUser {
 
     @Test
     public void test() {
-        // 获取Spring 框架的核心容器
+        // 创建Spring容器
         ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
 
         // 获取创建的对象,强转成user类 (根据id获取)

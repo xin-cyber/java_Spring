@@ -14,6 +14,8 @@
         <module>spring6_03_reflect</module>
         <module>spring6_04_selfMadeAnnotation</module>
         <module>spring6_05_aop</module>
+        <module>spring6_06_junit5</module>
+        <module>spring6_07_JDBC</module>
     </modules>
 
     <properties>
@@ -28,6 +30,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>6.0.2</version>
+        </dependency>
+
+        <!--spring对junit的支持相关依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
             <version>6.0.2</version>
         </dependency>
 
