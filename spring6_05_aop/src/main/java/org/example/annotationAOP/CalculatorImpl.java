@@ -1,8 +1,13 @@
-package com.atguigu.spring6.aop.annoaop;
+package org.example.annotationAOP;
 
 import org.springframework.stereotype.Component;
 
-//基本实现类
+/**
+ * @Author JX
+ * @ClassName: org.example.annotationAOP.CalculatorImpl
+ * @Create 2023-09-07 14:33
+ * @Description: TODO
+ */
 @Component
 public class CalculatorImpl implements Calculator {
 
@@ -13,8 +18,6 @@ public class CalculatorImpl implements Calculator {
 
         System.out.println("方法内部 result = " + result);
 
-        //为了测试，模拟异常出现
-       // int a = 1/0;
         return result;
     }
 
