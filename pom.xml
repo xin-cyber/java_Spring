@@ -16,6 +16,9 @@
         <module>spring6_05_aop</module>
         <module>spring6_06_junit5</module>
         <module>spring6_07_JDBC</module>
+        <module>spring6_08_resource</module>
+        <module>spring6_09_i18n</module>
+        <module>spring6_10_validation</module>
     </modules>
 
     <properties>
